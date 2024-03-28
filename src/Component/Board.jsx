@@ -36,6 +36,9 @@ const Board = () => {
         return state[a];
       }
     }
+    if (state.every((square) => square !== null)) {
+      return "Draw";
+    }
     return false;
   };
 
@@ -69,7 +72,9 @@ const Board = () => {
           <h1 className="text">O Score : {player2Score}</h1>
         </div>
         {isWinner ? (
-          <h1 className="text">Winner is {isWinner}</h1>
+          <h1 className="text">
+            {isWinner === "Draw" ? "Draw" : "Winner is" + " " + isWinner}
+          </h1>
         ) : (
           <h1 className="text">Next player is {isPlayerX ? "X" : "O"}</h1>
         )}
